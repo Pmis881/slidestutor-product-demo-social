@@ -1,19 +1,19 @@
 ---
 name: product-demo-social
-description: Turn a real product screen recording into a polished, templated vertical MP4 showcase for 小红书/Xiaohongshu and other social feeds. Use for product feature demos, app walkthrough cards, and reusable branded screen-recording layouts. Do not use for Live Photo, GIF conversion, or static covers.
+description: Create polished, reusable SlidesTutor social assets from real product recordings or screenshots, including vertical MP4 demos and static Xiaohongshu feature cards. Use for product feature demos, app walkthroughs, social carousels, and branded product visuals. Do not fabricate product UI.
 metadata:
-  version: 1.0.0
+  version: 1.1.0
 ---
 
-# Product Demo Social
+# SlideTutor Social Assets
 
-Create a short, legible product showcase using the supplied screen recording as the focal point. Preserve the real UI and do not fabricate product behavior. The only deliverable is a vertical MP4 unless the user explicitly asks for additional ordinary video sizes.
+Create short, legible product assets using real product recordings or screenshots as the focal point. Preserve the real UI and do not fabricate product behavior. Choose the output format from the user's request: vertical MP4 for motion demos, or a static PNG for feature cards and carousel pages.
 
 ## Required inputs
 
 Obtain or infer:
 
-- a screen recording (`.mp4`, `.mov`, `.webm`, or `.gif`)
+- a screen recording (`.mp4`, `.mov`, `.webm`, or `.gif`) for video, or a screenshot (`.png`, `.jpg`, `.webp`) for static output
 - one headline describing the user benefit
 - optional subtitle or proof line
 - optional logo, mascot, brand color, or eyebrow label
@@ -23,7 +23,7 @@ If a URL is supplied instead of a recording, ask which interaction should be dem
 
 ## Default production choices
 
-- Deliver `1080x1440` (3:4), H.264 MP4, 24 fps, normally 6–10 seconds, muted.
+- Deliver `1080x1440` (3:4). For video, use H.264 MP4, 24 fps, normally 6–10 seconds, muted. For static assets, use PNG.
 - Use `SlidesTutor` as the public-facing brand name in visible branding. The all-caps logo text is `SLIDESTUTOR` (including the `s` after `slide`). Do not output `SlideTutor`, `SLIDETUTOR`, `FriesAI`, or `薯塔AI` unless the user explicitly requests an exception.
 - Use a warm off-white background, near-black typography, and one restrained blue-violet accent unless brand colors are supplied.
 - Keep headline and subtitle in the top quarter. Use left alignment, a clear hierarchy, and generous margins.
@@ -34,11 +34,11 @@ If a URL is supplied instead of a recording, ask which interaction should be dem
 
 ## Workflow
 
-1. Inspect the recording dimensions, duration, and first/middle/last frames. Trim dead time, loading states, notifications, personal information, and accidental cursor travel.
+1. Identify the output mode. For video, inspect recording dimensions, duration, and first/middle/last frames. For static output, inspect the screenshot and choose the most informative crop.
 2. Draft a benefit-led headline, normally no more than 16 Chinese characters, and an optional support line no more than 24 Chinese characters. Preserve user-supplied copy unless asked to rewrite it.
-3. Render with `scripts/render_product_demo.py`. Use `--device auto` unless the user specifies the presentation style. Add a mascot only if supplied or requested.
-4. Inspect the first, middle, and last frames. Verify the screen is not stretched or letterboxed, typography is balanced, the product card has a thin border, and no copy is clipped.
-5. Deliver the MP4 and state its dimensions, duration, and file size.
+3. Render video with `scripts/render_product_demo.py`; use `--device auto` unless the user specifies the presentation style. Render static cards with `scripts/render_static_product_demo.py`.
+4. Inspect the output. For video, check first/middle/last frames. For static cards, check the full PNG at 100% and a phone-sized preview. In both modes, verify no stretching, clipping, black letterboxing, or incorrect branding.
+5. Deliver the requested files and state dimensions, duration (video only), and file size.
 
 Example:
 
