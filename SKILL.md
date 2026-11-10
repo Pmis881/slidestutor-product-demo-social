@@ -1,11 +1,11 @@
 ---
 name: product-demo-social
-description: Create polished, reusable SlidesTutor social assets from real product recordings or screenshots, including vertical MP4 demos and static Xiaohongshu feature cards. Use for product feature demos, app walkthroughs, social carousels, and branded product visuals. Do not fabricate product UI.
+description: Create polished, reusable product social assets from real product recordings or screenshots, including vertical MP4 demos and static Xiaohongshu feature cards. Use for product feature demos, app walkthroughs, social carousels, and branded product visuals. Do not fabricate product UI.
 metadata:
-  version: 1.1.0
+  version: 2.0.0
 ---
 
-# SlideTutor Social Assets
+# Product Social Assets
 
 Create short, legible product assets using real product recordings or screenshots as the focal point. Preserve the real UI and do not fabricate product behavior. Choose the output format from the user's request: vertical MP4 for motion demos, or a static PNG for feature cards and carousel pages.
 
@@ -24,7 +24,7 @@ If a URL is supplied instead of a recording, ask which interaction should be dem
 ## Default production choices
 
 - Deliver `1080x1440` (3:4). For video, use H.264 MP4, 24 fps, normally 6–10 seconds, muted. For static assets, use PNG.
-- Use `SlidesTutor` as the public-facing brand name in visible branding. The all-caps logo text is `SLIDESTUTOR` (including the `s` after `slide`). Do not output `SlideTutor`, `SLIDETUTOR`, `FriesAI`, or `薯塔AI` unless the user explicitly requests an exception.
+- Keep branding configurable. Pass the product's public name through `--eyebrow` for video or static output; never assume a specific company name. If no brand is supplied, use the neutral label `PRODUCT DEMO`.
 - Use a warm off-white background, near-black typography, and one restrained blue-violet accent unless brand colors are supplied.
 - Keep headline and subtitle in the top quarter. Use left alignment, a clear hierarchy, and generous margins.
 - Use one feature and one visual action per asset. Prefer a tight crop and readable UI over showing the entire page.
@@ -49,7 +49,7 @@ python3 scripts/render_product_demo.py \
   --title "手写笔记也能看懂？" \
   --subtitle "遇到不会的问题直接问 AI" \
   --caption "适配各种格式文档，学习更轻松" \
-  --eyebrow "SLIDESTUTOR · AI 学习空间" \
+  --eyebrow "YOUR BRAND · PRODUCT DEMO" \
   --device auto
 ```
 

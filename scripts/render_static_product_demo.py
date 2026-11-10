@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Render a real product screenshot as a reusable SlidesTutor social card."""
+"""Render a real product screenshot as a reusable product social card."""
 import argparse
 import math
 from pathlib import Path
@@ -26,7 +26,8 @@ def main():
     ap.add_argument("--title", required=True)
     ap.add_argument("--subtitle", default="")
     ap.add_argument("--caption", default="")
-    ap.add_argument("--eyebrow", default="SLIDESTUTOR · AI 学习空间")
+    ap.add_argument("--eyebrow", default="PRODUCT DEMO")
+    ap.add_argument("--brand", default="", help="Optional public product name shown in the footer")
     args = ap.parse_args()
 
     img = Image.new("RGB", (W, H), "#F8F8F6")
@@ -71,7 +72,8 @@ def main():
         d.line((110, 1164, 134, 1164), fill="#FFFFFF", width=5)
         d.line((122, 1152, 122, 1176), fill="#FFFFFF", width=5)
         d.text((174, 1150), args.caption, font=font(30), fill="#25212C")
-    d.text((70, 1330), "SlidesTutor · AI 学习空间", font=font(23), fill="#7655EE")
+    if args.brand:
+        d.text((70, 1330), args.brand, font=font(23), fill="#7655EE")
     Path(args.output).parent.mkdir(parents=True, exist_ok=True)
     img.save(args.output, quality=96)
     print(args.output)

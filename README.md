@@ -1,6 +1,6 @@
-# SlidesTutor 社媒素材 Skill
+# 通用产品社媒素材 Skill
 
-一个可复用的 Agent Skill：把 SlidesTutor 的真实产品录屏或截图，制作成适合小红书和其他社交平台的产品展示素材。
+一个可复用的 Agent Skill：把任何产品的真实录屏或截图，制作成适合小红书和其他社交平台的产品展示素材。
 
 支持两种主要输出：
 
@@ -15,7 +15,7 @@
 - `references/xiaohongshu-spec.md` — 小红书规格与检查标准
 - `agents/openai.yaml` — Codex skill 元信息
 
-默认品牌名是 `SlidesTutor`，左上角全大写标识必须写成 `SLIDESTUTOR`，官网是 `slidestutor.com`。
+品牌不是写死的。每次通过 `--eyebrow` 传入左上角品牌标识；如果不传，默认使用中性的 `PRODUCT DEMO`。SlidesTutor 只是当前项目的使用示例。
 
 ## 视频：快速开始
 
@@ -40,11 +40,13 @@ python3 scripts/render_static_product_demo.py \
   --output out/slidestutor-feature.png \
   --title "PDF 翻译，手写也能识别" \
   --subtitle "扫描件、数学公式、课件内容都能处理" \
-  --caption "手写内容和公式也能识别、整理与翻译"
+  --caption "手写内容和公式也能识别、整理与翻译" \
+  --eyebrow "SLIDESTUTOR · AI 学习空间" \
+  --brand "SlidesTutor"
 ```
 
 输出为 1080×1440 PNG，适合小红书首图、功能介绍页和轮播图。
 
 ## 设计原则
 
-始终使用真实产品画面；统一使用 SlidesTutor / SLIDESTUTOR；保持浅色背景、紫色强调色、清晰的利益点标题；不要为了“好看”虚构产品界面或功能结果。
+始终使用真实产品画面；品牌名通过参数传入；保持浅色背景、紫色强调色、清晰的利益点标题；不要为了“好看”虚构产品界面或功能结果。

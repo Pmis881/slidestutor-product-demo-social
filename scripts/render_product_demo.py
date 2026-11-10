@@ -126,7 +126,7 @@ def arguments():
     parser.add_argument("--title", required=True)
     parser.add_argument("--subtitle", default="")
     parser.add_argument("--caption", default="")
-    parser.add_argument("--eyebrow", default="SLIDESTUTOR · AI 学习空间")
+    parser.add_argument("--eyebrow", default="PRODUCT DEMO")
     parser.add_argument("--device", choices=("auto", "browser", "tablet", "phone", "plain"), default="auto")
     parser.add_argument("--mascot", type=Path)
     parser.add_argument("--accent", type=parse_hex, default=(88, 77, 230))
